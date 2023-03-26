@@ -9,10 +9,11 @@ import (
 
 func openTodolist(projectName string) {
 	fmt.Println("Doing stuff for the project", projectName)
+
+	openPrompt(projectName)
 }
 
 func main() {
-	// 1. Load todolist
 	fmt.Println("Welcome to togolist!")
 
 	now := time.Now()
