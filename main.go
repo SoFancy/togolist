@@ -7,12 +7,8 @@ import (
 	"time"
 )
 
-func openProjectTodolist(projectName string) {
+func openTodolist(projectName string) {
 	fmt.Println("Doing stuff for the project", projectName)
-}
-
-func openDatedTodolist(date string) {
-	fmt.Println("Doing stuff for the date", date)
 }
 
 func main() {
@@ -31,28 +27,28 @@ func main() {
 				fmt.Println("No projectname specified. I don't know what to do. Panic attack. Aborting.")
 				os.Exit(1)
 			}
-			openProjectTodolist(args[1])
+			openTodolist(args[1])
 		case "date":
 			fmt.Println("Date")
 			if len(args) < 2 {
 				fmt.Println("You wanted to open a togolist for a date, but no date was specified. Defaulting to the beginning of the universe. Error. Aborting.")
 				os.Exit(1)
 			}
-			openDatedTodolist(args[1])
+			openTodolist(args[1])
 		case "yesterday":
 			fmt.Println("Yesterday")
 			yesterday := now.AddDate(0, 0, -1).Format("2006-01-02")
-			openDatedTodolist(yesterday)
+			openTodolist(yesterday)
 		case "today":
 			fmt.Println("Today")
 			today := now.Format("2006-01-02")
-			openDatedTodolist(today)
+			openTodolist(today)
 		default:
 			fmt.Println("Unknown argument:", args[0])
 		}
 	} else {
 		fmt.Println("No argument specified, creating new todolist for today if none exists")
 		today := now.Format("2006-01-02")
-		openDatedTodolist(today)
+		openTodolist(today)
 	}
 }
